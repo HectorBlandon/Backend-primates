@@ -1,0 +1,33 @@
+{
+    "defaultSeverity": "error",
+    "extends": ["tslint:recomended"],
+    "jsRules": {
+        // "no-unused-exprettierssion": true
+    },
+    "rules":{
+        "quotemark": [
+            true,
+            "single",
+            "avoid-escape"
+        ],
+        "member-access": [false],
+        "ordered-imports": [false],
+        "max-line-length": [true,400],
+        "member-ordering": [false],
+        "interface-name": [false],
+        "arrow-parens": [false],
+        "object-literal-sort-keys": false,
+         "whitespace": [
+            true,
+            "check-branch",
+            "check-decl",
+            "check-operator",
+            "check-separator",
+            "check-type"
+        ],
+        "prettier/prettier": ["error", {}, {
+            "usePrettierrc": false
+          }]
+    },
+    "rulesDirectory": []
+}
