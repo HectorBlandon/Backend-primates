@@ -6,8 +6,8 @@ export class ProductoDto {
   readonly precio: number;
   readonly sku: string;
   readonly activo: boolean;
-  readonly createdBy: number;
-  // readonly createdDate: string;
+  // readonly createdBy: number;
+  readonly createdDate: string;
   // readonly modifiedBy: number;
-  // readonly modifiedDate: string;
+  readonly modifiedDate: string;
 }
