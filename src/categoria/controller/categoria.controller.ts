@@ -5,7 +5,7 @@ import { CategoriaService } from '../services/categoria.service';
 
 @Controller('categoria')
 export class CategoriaController {
-  constructor(private readonly categoriaService: CategoriaService) {}
+  constructor(private readonly categoriaService: CategoriaService) { }
 
   /**
    * Controlador encargado de crear una categoria
@@ -43,7 +43,7 @@ export class CategoriaController {
    * @param response 
    * @param id_categoria 
    */
-  @Put(':id')
+  @Put('/actualizar-categoria')
   actualizarCategorias(@Body() actualizarCategoriaDto: CategoriaDto, @Res() response, @Param('id') id_categoria,) {
     return this.categoriaService.actualizarCategoria(id_categoria, actualizarCategoriaDto).then((categoriaActualizada) => {
       response.status(HttpStatus.OK).json(categoriaActualizada);
@@ -59,10 +59,10 @@ export class CategoriaController {
    * @param response 
    * @param id_categoria 
    */
-  @Delete(':id')
-  eliminarCategorias(@Res() response, @Param('id') id_categoria,) {
+  @Delete('/eliminar-categoria')
+  eliminarCategorias(@Res() response, @Param('id_categoria') id_categoria: number) {
     this.categoriaService.eliminarCategoria(id_categoria).then((res) => {
-        response.status(HttpStatus.OK).json(res);
+      response.status(HttpStatus.OK).json(res);
     }).catch(() => {
       response
         .status(HttpStatus.FORBIDDEN)

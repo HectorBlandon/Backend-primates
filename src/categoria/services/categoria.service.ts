@@ -19,7 +19,6 @@ export class CategoriaService {
   async crearCategoria(categoria: CategoriaDto) {
     const nuevaCategoria = new Categoria();
     nuevaCategoria.nombre_categoria = categoria.nombre_categoria;
-    nuevaCategoria.orden = categoria.orden;
     nuevaCategoria.activo = categoria.activo;
     return this.categoriaRepository.save(nuevaCategoria);
   } 
@@ -44,7 +43,6 @@ export class CategoriaService {
     );
     categoriaAModificar.nombre_categoria = categoria.nombre_categoria;
     categoriaAModificar.activo = categoria.activo;
-    categoriaAModificar.orden = categoria.orden;
 
     return this.categoriaRepository.save(categoriaAModificar);
   }

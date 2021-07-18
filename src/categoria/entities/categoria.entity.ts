@@ -4,6 +4,7 @@ import {
     PrimaryGeneratedColumn,
     Column, CreateDateColumn, UpdateDateColumn,OneToMany// BeforeInsert, // BeforeUpdate,
 } from 'typeorm';
+import { IsNotEmpty } from 'class-validator';
 
 @Entity()
 export class Categoria {
@@ -12,15 +13,15 @@ export class Categoria {
     public id_categoria: number;
 
     @Column({type: 'varchar', length: 12})
+    @IsNotEmpty()
     public nombre_categoria: string;
 
     @Column({type: 'varchar'})
+    @IsNotEmpty()
     public activo: string;
 
-    @Column({type: 'decimal'})
-    public orden: number;
-
     @CreateDateColumn()
+    @IsNotEmpty()
     public createDate: string;
 
   @UpdateDateColumn()
@@ -28,14 +29,4 @@ export class Categoria {
 
     @OneToMany(() => Producto, (productoModelo) => productoModelo.id_producto)
     productoModelo: Producto[];
-
-    // @BeforeInsert()
-  // public async createDetails(): Promise<void> {
-  //   this.createdDate = moment().format('YYYY-MM-DD HH:mm:ss');
-  // }
-
-  // @BeforeUpdate()
-  // public async updateDetails(): Promise<void> {
-  //   this.modifiedDate = moment().format('YYYY-MM-DD HH:mm:ss');
-  // }
 }
