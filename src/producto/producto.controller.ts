@@ -15,6 +15,12 @@ import { ProductoService } from '../services/producto-service/producto-service.s
 @Controller('producto')
 export class ProductoController {
   constructor(private productoService: ProductoService) {}
+
+  /**
+   * Controlador encargado de crear un producto
+   * @param response 
+   * @param id_categoria 
+   */
   @Post('crear-producto')
   crearProducto(@Body() productoModelo: ProductoDto, @Res() response) {
     console.log(productoModelo);
@@ -29,6 +35,12 @@ export class ProductoController {
           .json({ mensaje: 'Error en la creación del producto' });
       });
   }
+
+  /**
+   * Controlador encargado de listar los productos
+   * @param response 
+   * @param id_categoria 
+   */
   @Get()
   listarProductos(@Res() response) {
     this.productoService
@@ -42,6 +54,12 @@ export class ProductoController {
           .json({ mensaje: 'Error en la obtencion de la lista de produstos' });
       });
   }
+
+  /**
+   * Controlador encargado de actualizar un producto
+   * @param response 
+   * @param id_categoria 
+   */
   @Put(':id')
   actualizar(
     @Body() productoDTO: ProductoDto,
@@ -59,6 +77,12 @@ export class ProductoController {
         });
       });
   }
+
+  /**
+   * Controlador encargado de eliminar un producto
+   * @param response 
+   * @param id_categoria 
+   */
   @Delete(':id')
   eliminarProducto(@Res() response, @Param('id') id_producto) {
     this.productoService

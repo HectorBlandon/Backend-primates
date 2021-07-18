@@ -1,3 +1,4 @@
+import { Categoria } from '../categoria/entities/categoria.entity';
 export class ProductoDto {
   readonly nombre_producto: string;
   readonly descripcion: string;
@@ -5,9 +6,6 @@ export class ProductoDto {
   readonly cantidad: number;
   readonly precio: number;
   readonly sku: string;
-  readonly activo: boolean;
-  // readonly createdBy: number;
-  readonly createdDate: string;
-  // readonly modifiedBy: number;
-  readonly modifiedDate: string;
+  readonly activo: string;
+  readonly categoriaEntity: Categoria;
 }

@@ -22,6 +22,7 @@ export class ProductoService {
     nuevoProducto.marca = producto.marca;
     nuevoProducto.precio = producto.precio;
     nuevoProducto.sku = producto.sku;
+    nuevoProducto.categoriaEntity.id_categoria = producto.categoriaEntity.id_categoria;
 
     return this.productoRepository.save(nuevoProducto);
   }
