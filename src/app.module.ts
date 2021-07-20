@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
@@ -12,11 +13,11 @@ import { CiudadModule } from './ciudad/ciudad.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
+      host: 'ec2-52-1-20-236.compute-1.amazonaws.com',
       port: 5432,
-      username: 'postgres',
-      password: '1996',
-      database: 'PRIMATES',
+      username: 'vwzpdnljxybjrx',
+      password: '0b855792d4813be0c8221ab35e3ce75dc7af5f6b7a4e29a86521715cb37e1b66',
+      database: 'd4l8r8642opmlg',
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
