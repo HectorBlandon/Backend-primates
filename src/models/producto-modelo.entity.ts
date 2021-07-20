@@ -1,10 +1,11 @@
 
 import {  Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, Column, ManyToOne} from 'typeorm';
-import { IsNotEmpty, IsNumber, IsPositive, IsString } from 'class-validator';
+import { IsNotEmpty } from 'class-validator';
 import { Categoria } from '../categoria/entities/categoria.entity';
 
 @Entity('Producto')
 export class Producto {
+
   @PrimaryGeneratedColumn()
   public id_producto: number;
 
@@ -24,7 +25,7 @@ export class Producto {
   @IsNotEmpty()
   public cantidad: number;
 
-  @Column()
+  @Column({type: 'integer'})
   @IsNotEmpty()
   public precio: number;
 
@@ -43,6 +44,8 @@ export class Producto {
   public modifiedDate: string;
 
   @ManyToOne(() => Categoria, (categoriaEntity) => categoriaEntity.id_categoria)
-  // @IsNotEmpty()
+  @IsNotEmpty()
   categoriaEntity: Categoria;
+  
+
 }
