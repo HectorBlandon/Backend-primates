@@ -10,7 +10,7 @@ export class CategoriaController {
   /**
    * Controlador encargado de crear una categoria
    * @param response 
-   * @param id_categoria 
+   * @param createCategoriaDto 
    */
   @Post('crear-categoria')
   crearCategoria(@Body() createCategoriaDto: CategoriaDto, @Res() response) {
@@ -18,7 +18,12 @@ export class CategoriaController {
     return this.categoriaService.crearCategoria(createCategoriaDto).then((categoria) => {
       response.status(HttpStatus.CREATED).json(categoria);
     }).catch(() => {
-      response.status(HttpStatus.FORBIDDEN).json({ mensaje: 'Error en la creación de la categoria' });
+      response.status(HttpStatus.FORBIDDEN).json({
+        timestamp: new Date,
+        status: 403,
+        error: "Forbidden",
+        mensaje: 'Error en la creación de la categoria'
+      });
     });
   }
 
@@ -32,9 +37,12 @@ export class CategoriaController {
     this.categoriaService.listarCategorias().then((categoriaList) => {
       response.status(HttpStatus.OK).json(categoriaList);
     }).catch(() => {
-      response
-        .status(HttpStatus.FORBIDDEN)
-        .json({ mensaje: 'Error en la obtencion de la lista de categorias' });
+      response.status(HttpStatus.FORBIDDEN).json({
+        timestamp: new Date,
+        status: 403,
+        error: "Forbidden",
+        mensaje: 'Error en listar las categoria'
+      });
     });
   }
 
@@ -43,7 +51,7 @@ export class CategoriaController {
    * @param response 
    * @param id_categoria 
    */
-  @Put('/actualizar-categoria')
+  @Put('actualizar-categoria')
   actualizarCategorias(@Body() actualizarCategoriaDto: CategoriaDto, @Res() response, @Param('id') id_categoria,) {
     return this.categoriaService.actualizarCategoria(id_categoria, actualizarCategoriaDto).then((categoriaActualizada) => {
       response.status(HttpStatus.OK).json(categoriaActualizada);
@@ -59,7 +67,7 @@ export class CategoriaController {
    * @param response 
    * @param id_categoria 
    */
-  @Delete('/eliminar-categoria')
+  @Delete('eliminar-categoria')
   eliminarCategorias(@Res() response, @Param('id_categoria') id_categoria: number) {
     this.categoriaService.eliminarCategoria(id_categoria).then((res) => {
       response.status(HttpStatus.OK).json(res);

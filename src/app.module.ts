@@ -6,7 +6,7 @@ import { ProductoController } from './producto/producto.controller';
 import { ProductoService } from './services/producto-service/producto-service.service';
 import { Producto } from './models/producto-modelo.entity';
 import { CategoriaModule } from './categoria/categoria.module';
-import { Categoria } from './categoria/entities/categoria.entity';
+import { CiudadModule } from './ciudad/ciudad.module';
 
 @Module({
   imports: [
@@ -22,6 +22,7 @@ import { Categoria } from './categoria/entities/categoria.entity';
     }),
     TypeOrmModule.forFeature([Producto]),
     CategoriaModule,
+    CiudadModule,
   ],
   controllers: [AppController, ProductoController],
   providers: [AppService, ProductoService],

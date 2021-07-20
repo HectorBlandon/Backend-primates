@@ -9,9 +9,8 @@ export class CategoriaService {
 
   constructor(
     @InjectRepository(Categoria)
-    private readonly categoriaRepository: Repository <CategoriaDto>,) 
-  { }
-  
+    private readonly categoriaRepository: Repository<CategoriaDto>) { }
+
   async listarCategorias(): Promise<CategoriaDto[]> {
     return await this.categoriaRepository.find();
   }
@@ -21,7 +20,7 @@ export class CategoriaService {
     nuevaCategoria.nombre_categoria = categoria.nombre_categoria;
     nuevaCategoria.activo = categoria.activo;
     return this.categoriaRepository.save(nuevaCategoria);
-  } 
+  }
 
   async buscarCategoriaId(
     id_categoria: number,
