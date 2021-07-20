@@ -2,7 +2,7 @@ import { Producto } from '../../models/producto-modelo.entity';
 import {
     Entity,
     PrimaryGeneratedColumn,
-    Column, CreateDateColumn, UpdateDateColumn,OneToMany// BeforeInsert, // BeforeUpdate,
+    Column, CreateDateColumn, UpdateDateColumn,OneToMany
 } from 'typeorm';
 import { IsNotEmpty } from 'class-validator';
 
@@ -24,7 +24,7 @@ export class Categoria {
     @IsNotEmpty()
     public createDate: string;
 
-  @UpdateDateColumn()
+    @UpdateDateColumn()
     public modifiedDate: string; 
 
     @OneToMany(() => Producto, (productoModelo) => productoModelo.id_producto)
