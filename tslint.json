@@ -2,7 +2,7 @@
     "defaultSeverity": "error",
     "extends": ["tslint:recomended"],
     "jsRules": {
-        // "no-unused-exprettierssion": true
+        "no-unused-exprettierssion": true
     },
     "rules":{
         "quotemark": [
@@ -26,7 +26,7 @@
             "check-type"
         ],
         "prettier/prettier": ["error", {}, {
-            "usePrettierrc": false
+            "usePrettierrc": true
           }]
     },
     "rulesDirectory": []

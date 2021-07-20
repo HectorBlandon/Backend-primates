@@ -1,5 +1,12 @@
-
-import {  Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, Column, ManyToOne} from 'typeorm';
+/* eslint-disable prettier/prettier */
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+  Column,
+  ManyToOne,
+} from 'typeorm';
 import { IsNotEmpty, IsNumber, IsPositive, IsString } from 'class-validator';
 import { Categoria } from '../categoria/entities/categoria.entity';
 
@@ -8,19 +15,19 @@ export class Producto {
   @PrimaryGeneratedColumn()
   public id_producto: number;
 
-  @Column({type: 'varchar'})
+  @Column({ type: 'varchar' })
   @IsNotEmpty()
   public nombre_producto: string;
 
-  @Column({type: 'varchar'})
+  @Column({ type: 'varchar' })
   @IsNotEmpty()
   public descripcion: string;
 
-  @Column({type: 'varchar'})
+  @Column({ type: 'varchar' })
   @IsNotEmpty()
   public marca: string;
 
-  @Column({type: 'integer'})
+  @Column({ type: 'integer' })
   @IsNotEmpty()
   public cantidad: number;
 
@@ -28,11 +35,11 @@ export class Producto {
   @IsNotEmpty()
   public precio: number;
 
-  @Column({type: 'varchar'})
+  @Column({ type: 'varchar' })
   @IsNotEmpty()
   public sku: string;
 
-  @Column({type: 'varchar'})
+  @Column({ type: 'varchar' })
   @IsNotEmpty()
   public activo: string;
 
