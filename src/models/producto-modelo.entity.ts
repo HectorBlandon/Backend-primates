@@ -1,46 +1,48 @@
-// import moment from 'moment';
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  // BeforeInsert,
-  // BeforeUpdate,
-} from 'typeorm';
-// import { Base } from './base'; extends Base
 
-@Entity()
-export class ProductoModelo {
+import {  Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, Column, ManyToOne} from 'typeorm';
+import { IsNotEmpty, IsNumber, IsPositive, IsString } from 'class-validator';
+import { Categoria } from '../categoria/entities/categoria.entity';
+
+@Entity('Producto')
+export class Producto {
   @PrimaryGeneratedColumn()
   public id_producto: number;
 
-  @Column()
-  public activo: boolean;
-
-  @Column()
+  @Column({type: 'varchar'})
+  @IsNotEmpty()
   public nombre_producto: string;
 
-  @Column()
+  @Column({type: 'varchar'})
+  @IsNotEmpty()
   public descripcion: string;
 
-  @Column()
+  @Column({type: 'varchar'})
+  @IsNotEmpty()
   public marca: string;
 
-  @Column()
+  @Column({type: 'integer'})
+  @IsNotEmpty()
   public cantidad: number;
 
   @Column()
+  @IsNotEmpty()
   public precio: number;
 
-  @Column()
+  @Column({type: 'varchar'})
+  @IsNotEmpty()
   public sku: string;
 
-  // @BeforeInsert()
-  // public async createDetails(): Promise<void> {
-  //   this.createdDate = moment().format('YYYY-MM-DD HH:mm:ss');
-  // }
+  @Column({type: 'varchar'})
+  @IsNotEmpty()
+  public activo: string;
 
-  // @BeforeUpdate()
-  // public async updateDetails(): Promise<void> {
-  //   this.modifiedDate = moment().format('YYYY-MM-DD HH:mm:ss');
-  // }
+  @CreateDateColumn()
+  public createdDate: string;
+
+  @UpdateDateColumn()
+  public modifiedDate: string;
+
+  @ManyToOne(() => Categoria, (categoriaEntity) => categoriaEntity.id_categoria)
+  // @IsNotEmpty()
+  categoriaEntity: Categoria;
 }

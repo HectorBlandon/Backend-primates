@@ -4,7 +4,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProductoController } from './producto/producto.controller';
 import { ProductoService } from './services/producto-service/producto-service.service';
-import { ProductoModelo } from './models/producto-modelo.entity';
+import { Producto } from './models/producto-modelo.entity';
+import { CategoriaModule } from './categoria/categoria.module';
+import { CiudadModule } from './ciudad/ciudad.module';
 
 @Module({
   imports: [
@@ -13,12 +15,14 @@ import { ProductoModelo } from './models/producto-modelo.entity';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: '123456',
+      password: '1996',
       database: 'PRIMATES',
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([ProductoModelo]),
+    TypeOrmModule.forFeature([Producto]),
+    CategoriaModule,
+    CiudadModule,
   ],
   controllers: [AppController, ProductoController],
   providers: [AppService, ProductoService],
