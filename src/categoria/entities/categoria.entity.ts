@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Producto } from '../../models/producto-modelo.entity';
 import {
     Entity,

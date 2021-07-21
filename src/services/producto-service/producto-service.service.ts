@@ -8,21 +8,27 @@ import { ProductoDto } from '../../dto/producto-dto';
 export class ProductoService {
   constructor(
     @InjectRepository(Producto)
-    private readonly productoRepository: Repository<Producto>,
-  ) {}
+    private readonly productoRepository: Repository<ProductoDto>) {}
   async listarProductos(): Promise<ProductoDto[]> {
     return await this.productoRepository.find();
   }
+
   async crearProducto(producto: ProductoDto) {
+
+    console.log('data que llega al servicio', producto);
+
     const nuevoProducto = new Producto();
-    nuevoProducto.nombre_producto = producto.nombre_producto;
-    nuevoProducto.cantidad = producto.cantidad;
-    nuevoProducto.descripcion = producto.descripcion;
-    nuevoProducto.activo = producto.activo;
+    nuevoProducto.nombre_producto = producto.nombre_producto;    
+    nuevoProducto.descripcion = producto.descripcion;    
     nuevoProducto.marca = producto.marca;
+    nuevoProducto.cantidad = producto.cantidad;    
     nuevoProducto.precio = producto.precio;
     nuevoProducto.sku = producto.sku;
-    nuevoProducto.categoriaEntity.id_categoria = producto.categoriaEntity.id_categoria;
+    nuevoProducto.activo = producto.activo;
+    console.log('data', nuevoProducto);  
+    nuevoProducto.categoriaEntity = producto.categoriaEntity;
+    
+    console.log('data que se envia a la DB', nuevoProducto);    
 
     return this.productoRepository.save(nuevoProducto);
   }

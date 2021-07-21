@@ -1,10 +1,11 @@
-import { Column } from 'typeorm';
+/* eslint-disable prettier/prettier */
+import { Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 export class Base {
   //   @Exclude()
   @Column({ name: 'created_by' })
   public createdBy: number;
 
-  @Column({ name: 'created_date' })
+  @CreateDateColumn()
   public createdDate: string;
 
   /*   @Exclude()*/
@@ -12,6 +13,6 @@ export class Base {
   public modifiedBy: number;
 
   // @Exclude()
-  @Column({ name: 'modified_date' })
+  @UpdateDateColumn()
   public modifiedDate: string;
 }
