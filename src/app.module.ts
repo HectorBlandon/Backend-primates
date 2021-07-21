@@ -13,13 +13,13 @@ import { CiudadModule } from './ciudad/ciudad.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'ec2-52-1-20-236.compute-1.amazonaws.com',
+      host: 'ec2-54-147-93-73.compute-1.amazonaws.com',
       port: 5432,
-      username: 'vwzpdnljxybjrx',
-      password: '0b855792d4813be0c8221ab35e3ce75dc7af5f6b7a4e29a86521715cb37e1b66',
-      database: 'd4l8r8642opmlg',
+      username: 'rcectgcetgrrkm',
+      password: '91855ff1660f82edfb255de47fdd633d19a647d989cae16ba25622dfbd19480c',
+      database: 'd84tvv5duksllv',
       entities: ['dist/**/*.entity{.ts,.js}'],
-      ssl: true,
+      ssl: { rejectUnauthorized: false },
       synchronize: true,
     }),
     TypeOrmModule.forFeature([Producto]),
