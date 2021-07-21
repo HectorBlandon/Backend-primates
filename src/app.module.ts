@@ -19,6 +19,7 @@ import { CiudadModule } from './ciudad/ciudad.module';
       password: '0b855792d4813be0c8221ab35e3ce75dc7af5f6b7a4e29a86521715cb37e1b66',
       database: 'd4l8r8642opmlg',
       entities: ['dist/**/*.entity{.ts,.js}'],
+      ssl: true,
       synchronize: true,
     }),
     TypeOrmModule.forFeature([Producto]),
