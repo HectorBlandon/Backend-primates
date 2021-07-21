@@ -24,16 +24,22 @@ export class ProductoController {
    */
   @Post('crear-producto')
   crearProducto(@Body() productoModelo: ProductoDto, @Res() response) {
-    console.log(productoModelo);
+    console.log('entro al controller',productoModelo);
     return this.productoService
       .crearProducto(productoModelo)
       .then((producto) => {
         response.status(HttpStatus.CREATED).json(producto);
       })
-      .catch(() => {
+      .catch((err) => {
         response
           .status(HttpStatus.FORBIDDEN)
-          .json({ mensaje: 'Error en la creación del producto' });
+          .json({ 
+            timestamp: new Date,
+            status: 403,
+            error: "Forbidden",
+            mensaje: 'Error en la creación del producto'
+          
+        });
       });
   }
 
@@ -42,7 +48,7 @@ export class ProductoController {
    * @param response 
    * @param id_categoria 
    */
-  @Get()
+  @Get('listar-productos')
   listarProductos(@Res() response) {
     this.productoService
       .listarProductos()
@@ -52,7 +58,11 @@ export class ProductoController {
       .catch(() => {
         response
           .status(HttpStatus.FORBIDDEN)
-          .json({ mensaje: 'Error en la obtencion de la lista de produstos' });
+          .json({
+            timestamp: new Date,
+            status: 403,
+            error: "Forbidden",
+            mensaje: 'Error en listar los productos' });
       });
   }
 
